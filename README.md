@@ -37,8 +37,7 @@ SO THAT I can organize and plan my business
   <br><img src="./assets/screenshot.png" alt="screenshot of the app" width="350"/>
 
   
-  - <a href="https://drive.google.com/file/d/1S5tw95BAcPKRh_DlWCocOfnN_0IfLKk6/view?usp=sharing"> Walkthrough Video</a>
-   
+  - <a href="https://drive.google.com/file/d/1iPPX536CDu79SzQpO5xcSelrJXQsCrfa/view?usp=sharing"> Walkthrough Video</a>
  
 
   ## Contributing:
