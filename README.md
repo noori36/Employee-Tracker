@@ -34,7 +34,7 @@ SO THAT I can organize and plan my business
   To veiw, create, update and manage the companies dtabase.
   
   - Screenshot
-  <br><img src="./assets/images/screenshot1.png" alt="screenshot of generated HTML" width="350"/>
+  <br><img src="./assets/screenshot.png" alt="screenshot of the app" width="350"/>
 
   
   - <a href="https://drive.google.com/file/d/1S5tw95BAcPKRh_DlWCocOfnN_0IfLKk6/view?usp=sharing"> Walkthrough Video</a>
