@@ -1,7 +1,5 @@
 const express = require('express');
 const inquirer = require('inquirer');
-//const mysql = require('mysql2');
-//require('dotenv').config();
 const consoleTable = require('console.table');
 const db = require('./config/connection').default;
 
@@ -29,10 +27,6 @@ app.use(express.json());
 //console.log('Connected to the employee_tracker database.')
 //);
 
-//db.query(`SELECT * FROM employee`, (err, rows) => {
-//console.log(rows);
-//});
-
 // Default response for any other request (Not Found)
 app.use((req, res) => {
   res.status(404).end();
@@ -42,11 +36,7 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-//module.exports = db;
-
-//const questionPrompt = () => {
 const questionPrompt = () => {
-  //const answers = await inquirer.prompt({
   return inquirer.prompt({
     type: "list",
     name: "question",
@@ -91,9 +81,6 @@ const questionPrompt = () => {
       }
     })
 };
-
-
-
 
 //questionPrompt();
 

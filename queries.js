@@ -23,12 +23,6 @@ const showAllEmpl = () => {
         });
 };
 
-//getDeptsName();
-//getRolesName();
-//getEmplName();
-
-
-//addDepartment();
 const addDepartment = () => {
     inquirer.prompt([
         {
@@ -39,17 +33,16 @@ const addDepartment = () => {
     ])
     .then(dept => {
         const newDeptName = dept.deptName;
-        const query1 = `INSERT INTO department (name) VALUES ('${newDeptName}');`;
+        const deptQuery = `INSERT INTO department (name) VALUES ('${newDeptName}');`;
 
-        //db.promise().query("INSERT INTO department (name) SET ?", name);
-        db.query(query1, (err, rows) => {
+        db.query(deptQuery, (err, rows) => {
             console.table(rows);
             showAllDepts();
         });
     })
 };
 
-//addRole();
+
 const addRole = () => {
 
      return db.promise().query("SELECT department.id, department.name FROM department;")
@@ -83,7 +76,6 @@ const addRole = () => {
                 console.log(rolesDept);
                 const roleQuery = `INSERT INTO role (title, salary, department_id) VALUES ('${roleName}', ${rolesalary}, '${rolesDept}');`;
 
-                //db.promise().query("INSERT INTO department (name) SET ?", name);
                 db.query(roleQuery, (err, rows) => {
                     console.table(rows);
                     showAllRoles();
@@ -92,7 +84,6 @@ const addRole = () => {
         });
 }
 
-//addEmployee();
 
 const addEmpl = () => {
 
@@ -135,13 +126,8 @@ const addEmpl = () => {
         ])
         .then(newEmpl => {
             const { first_name, last_name, roles, managerName } = newEmpl;
-            
-            //const manager_first_name = managerName.split(' ')[0];
-            //const manager_last_name = managerName.split(' ')[1];
-
             const emplQuery = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('${first_name}', '${last_name}', '${roles}', '${managerName}');`;
 
-            //db.promise().query("INSERT INTO department (name) SET ?", name);
             db.query(emplQuery, (err, rows) => {
                 console.table(rows);
                 showAllEmpl();
@@ -154,22 +140,19 @@ const addEmpl = () => {
     });
 }
 
-
-//updateEmployeeRole();
-
 const updateEmplRole = () => {
 
     return db.promise().query("SELECT role.id, role.title, role.salary, role.department_id FROM role AS Role;")
         .then(([newRole]) => {
-            let rolesList = newRole.map(({id, title}) => ({
+            let rolesList = newRole.map(({title, id}) => ({
                 name: title,
                 value: id
         }))
 
         db.promise().query("SELECT * FROM employee;")
         .then(([emplName]) => {
-            let emplList = emplName.map(({ first_name, last_name, id }) => ({
-                name: first_name, last_name,
+            let emplList = emplName.map(({ first_name, id }) => ({
+                name: first_name,
                 value: id
         }));
         inquirer.prompt([
@@ -193,19 +176,12 @@ const updateEmplRole = () => {
             },
         ])
         .then(updateRole => {
-            const { emplName, newRole, newManager, salary} = updateRole;
-            
-            //const manager_first_name = managerName.split(' ')[0];
-            //const manager_last_name = managerName.split(' ')[1];
-
+            const { emplName, newRole, salary} = updateRole;
             const emplUpdateQuery = `UPDATE employee SET role_id = '${newRole}') WHERE first_name='${emplName}';`;
             
-
-            //db.promise().query("INSERT INTO department (name) SET ?", name);
             db.query(emplUpdateQuery, (err, rows) => {
                 console.table(rows);
-                showAllEmpl();
-            
+                showAllEmpl();   
                        
             });
         });
